@@ -64,7 +64,7 @@ class BloomFilter
     if data.is_a? Fixnum
       data = [data]
     elsif data.is_a? String
-      raise "call add_string when adding a string to the filter"
+      self.add_string(data)
     end
     h = BloomFilter.base_hashes(data)
     (0...k).each do |i|
@@ -109,5 +109,6 @@ class BloomFilter
     end
     hash
   end
-
+ 
+private :add_string
 end

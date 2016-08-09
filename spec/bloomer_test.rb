@@ -137,16 +137,16 @@ describe BloomFilter do
   it 'should add string to filter' do
     bf = BloomFilter.new(100, 0.01)
 
-    bf.add_string("abc")
+    bf.add("abc")
     expect(bf.test("abc"))
 
-    bf.add_string("xyz")
+    bf.add("xyz")
     expect(bf.test("xyz"))
 
-    bf.add_string("lij")
+    bf.add("lij")
     expect(bf.test("lij"))
 
-    bf.add_string("")
+    bf.add("")
     expect(bf.test(""))
   end 
 
@@ -162,13 +162,13 @@ describe BloomFilter do
     bf.add([100, 0, 3])
     expect(bf.encode_base64).to eq("AAAAAAAAA78AAAAAAAAAAAAAAAgAAAAAEAACAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAgAAAAgABAAAAAgAAAAgAIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAIAAAAAAAAAAAAAAIBAAAABAAAAAAAAQAAEAAAAEDA=")
 
-    bf.add_string("abc")
+    bf.add("abc")
     expect(bf.encode_base64).to  eq("AAAAAAAAA78AAAAAAAgAAAAAAAgAAAAAEAACAAAAAAAAAAAAAIAAAAAAAAAAAAEgAAAAAAAAAgAAAAgABCAAAAgAAAAgAIgAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAIAAAAAAAAAAAAAAIBAAQABAAAAAAAAQAAEABAAEDA=")
 
-    bf.add_string("xyz")
+    bf.add("xyz")
     expect(bf.encode_base64).to eq("AAAAAAAAA7-AAAAAAAgAAAACAAgAAAAAMAACAAAAAAAAAAAAAIAAAAAAAAAAAAEgAAAAAAAAAgAAAAgABCAAAAgAAAAgAIgEAAIAAAAAAAAAAAAAAAAAAAAAAAAAAABAQAIAAAAAAAAAAAAAAIBAQQABEAAAAAAAQAAEABAAEDA=")
 
-    bf.add_string("lij")
+    bf.add("lij")
     expect(bf.encode_base64).to eq("AAAAAAAAA7-AAAAAAAgAAAACAQgAAAAAMAACAAAAAAAAAAAAAIAAAAAAAAAAAAEgAAAAAAAAAgAAAAgABCAAAAgAAAAgAIgEAAIAAAAIAAAAAAAAAAAACAAAIAAAAEBAQAIAAAAAAAAAAAAAAIDAQQABEAAAAAAAQAAEABAAEDE=")
 
 
@@ -183,13 +183,13 @@ describe BloomFilter do
     bf.add([100, 0, 3])
     expect(bf.encode_base64).to eq("AAAAAAAAADAAAIVAGRBsAQ==")
 
-    bf.add_string("abc")
+    bf.add("abc")
     expect(bf.encode_base64).to eq("AAAAAAAAADAAAIVAGRBsAQ==")
 
-    bf.add_string("xyz")
+    bf.add("xyz")
     expect(bf.encode_base64).to eq("AAAAAAAAADAAAIVAGRH8BQ==")
 
-    bf.add_string("lij")
+    bf.add("lij")
     expect(bf.encode_base64).to eq("AAAAAAAAADAAAMVQGRH8BQ==")
   end
 
