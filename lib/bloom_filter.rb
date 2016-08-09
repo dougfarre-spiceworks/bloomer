@@ -1,6 +1,10 @@
 SIXTY_FOUR_BIT_MASK = (2**64) - 1
 THIRTY_TWO_BIT_MASK = (2**32) - 1
 
+require 'bitset'
+require 'base64'
+require 'json'
+
 class BloomFilter
   attr_accessor :m, :k, :b
 
@@ -77,7 +81,9 @@ class BloomFilter
 
   # Tests for the presence of data in the Bloom Filter
   def test(data)
-    if data.kind_of?(String) 
+    if data.is_a? Fixnum
+      data = [data]
+    elsif data.is_a? String
       data = data.split("")
     end
     h = BloomFilter.base_hashes(data)
@@ -91,11 +97,6 @@ class BloomFilter
   # Hashing function
   def self.fnv64Hash(index, data)
     # input checking
-    if data.class.is_a? Fixnum
-      data = [data]
-    elsif data.class.is_a? String
-      raise "Call add_string when adding a string to the bloom filter"
-    end
     index &= SIXTY_FOUR_BIT_MASK
     hash = index + 14695981039346656037
     data.each do |i|
