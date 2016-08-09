@@ -64,7 +64,7 @@ class BloomFilter
     if data.is_a? Fixnum
       data = [data]
     elsif data.is_a? String
-      self.add_string(data)
+      data = data.split("")
     end
     h = BloomFilter.base_hashes(data)
     (0...k).each do |i|
@@ -72,11 +72,6 @@ class BloomFilter
       self.b.set(loc)
     end
     true
-  end
- 
-  # Adds a string of data to the Bloom Filter
-  def add_string(str)
-    self.add(str.split(""))
   end
 
   # Tests for the presence of data in the Bloom Filter

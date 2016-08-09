@@ -1,4 +1,4 @@
-require 'bloom_filter'
+require 'bloomer'
 require 'bitset'
 require 'base64'
 
