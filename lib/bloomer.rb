@@ -105,5 +105,4 @@ class BloomFilter
     hash
   end
  
-private :add_string
 end

@@ -5,10 +5,10 @@ A bloom filter is a space-efficient, probabilistic data structure that represent
 This particular implementation of a bloom filter produces a filter that is compatible with this Go implementation (https://github.com/willf/bloom)
 
 # Installation
-		gem install bloom_filter
+		gem install bloomer
 # Example Usage
 
-		require bloom_filter
+		require bloomer
                 
     # Make a new bloom filter with data of size 500 bits and false positive rate of 0.1 %
         bf = BloomFilter.new(500, 0.1)
