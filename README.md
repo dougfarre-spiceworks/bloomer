@@ -8,7 +8,7 @@ This particular implementation of a bloom filter produces a filter that is compa
 		gem install bloomer
 # Example Usage
 
-		require bloomer
+		require 'bloomer'
                 
     # Make a new bloom filter with data of size 500 bits and false positive rate of 0.1 %
         bf = BloomFilter.new(500, 0.1)
